@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import create from './redux/create';
+import {fetchAsthmaPrevalenceIfNeeded} from './redux/modules/asthmaPrevalence';
+import Routes from './scenes';
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = create();
+store.dispatch(fetchAsthmaPrevalenceIfNeeded());
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Routes/>
+    </Provider>,
+    document.getElementById('root')
+);
+
 registerServiceWorker();

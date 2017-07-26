@@ -17,9 +17,10 @@ class AsthmaPrevalenceController extends Controller
         $stateTerritory = $request->get('state_territory');
         $year = $request->get('year');
 
+//        return AsthmaPrevalence::all();
         return AsthmaPrevalence::when($stateTerritory, function ($query) use ($stateTerritory) {
             return $query->where('state_territory',$stateTerritory);
-        })->when('year', function ($query) use ($year) {
+        })->when($year, function ($query) use ($year) {
             return $query->where('year', $year);
         })->get();
     }
