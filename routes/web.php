@@ -16,6 +16,6 @@
 //Route::get('geocode_fips','CsvImportController@geocodeFips');
 //Route::get('import_counties','CsvImportController@importCounties');
 
-Route::get('/', function () {
+Route::get('{reactRoutes}', function () {
     return File::get(public_path() . '/index.html');
-});
+})->where('reactRoutes', '^((?!api).)*$');
