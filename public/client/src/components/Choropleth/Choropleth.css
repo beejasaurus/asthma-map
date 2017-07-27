@@ -1,8 +1,8 @@
-#komodo-choropleth .leaflet-container {
-    min-height: 800px;
+.komodo-choropleth .leaflet-container {
+    /*height: 79vh;*/
     height: 100vh;
-    width: 100vh;
+    /*width: 79vw;*/
+    width: 100%;
     margin: 0;
     padding: 0;
-
 }

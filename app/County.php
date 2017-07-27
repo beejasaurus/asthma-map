@@ -9,4 +9,8 @@ class County extends Model
     protected $table = 'counties';
 
     public $timestamps = false;
+
+    public function scopeState($query, $stateTerritory) {
+        return $query->where('state_long', $stateTerritory);
+    }
 }

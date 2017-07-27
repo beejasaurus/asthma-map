@@ -9,6 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 const store = create();
 store.dispatch(fetchAsthmaPrevalenceIfNeeded());
+// TODO: Convert param so it uses an object instead of string
+store.dispatch(fetchAsthmaPrevalenceIfNeeded('?output=GeoJSON'));
 
 ReactDOM.render(
     <Provider store={store}>

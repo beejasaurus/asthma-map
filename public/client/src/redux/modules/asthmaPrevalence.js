@@ -3,11 +3,13 @@
 const INVALIDATE_ASTHMA_PREVALENCE = 'komodo/asthmaPrevalence/INVALIDATE_ASTHMA_PREVALENCE';
 const REQUEST_ASTHMA_PREVALENCE = 'komodo/asthmaPrevalence/REQUEST_ASTHMA_PREVALENCE';
 const RECEIVE_ASTHMA_PREVALENCE = 'komodo/asthmaPrevalence/RECEIVE_ASTHMA_PREVALENCE';
+const RECEIVE_ASTHMA_PREVALENCE_GEOJSON = 'komodo/asthmaPrevalence/RECEIVE_ASTHMA_PREVALENCE_GEOJSON';
 
 export const initialState = {
     isFetching: false,
     didInvalidate: false,
-    data: []
+    data: [],
+    geoJson: false,
 };
 
 export default function reducer (state = initialState, action) {
@@ -33,6 +35,14 @@ export default function reducer (state = initialState, action) {
                 data: action.payload.json,
             };
 
+        case RECEIVE_ASTHMA_PREVALENCE_GEOJSON:
+            return {
+                ...state,
+                isFetching: false,
+                didInvalidate: false,
+                geoJson: action.payload.json,
+            };
+
         default:
             return state;
     }
@@ -42,6 +52,15 @@ export const getAsthmaPrevalenceDidInvalidate = (state) => state.asthmaPrevalenc
 export const getAsthmaPrevalenceIsFetching = (state) => state.asthmaPrevalence.isFetching;
 export const getAsthmaPrevalence = (state) => state.asthmaPrevalence.data;
 export const getAsthmaPrevalenceStatesTerritories = (state) => getAsthmaPrevalence(state).map(ap => ap.state_territory);
+export const getAsthmaPrevalenceGeoJson = (state) => state.asthmaPrevalence.geoJson;
+export const getAsthmaPrevalenceByState = (stateTerritory, state) => {
+    const selected = getAsthmaPrevalence(state).filter(ap => ap.state_territory === stateTerritory);
+    if(selected.length !== 0) {
+        return selected[0];
+    }
+
+    return false;
+}
 
 export const invalidateAsthmaPrevalence = () => ({
     type: INVALIDATE_ASTHMA_PREVALENCE,
@@ -49,9 +68,11 @@ export const invalidateAsthmaPrevalence = () => ({
     errors: {},
 });
 
-export const requestAsthmaPrevalence = () => ({
+export const requestAsthmaPrevalence = (params) => ({
     type: REQUEST_ASTHMA_PREVALENCE,
-    payload: {},
+    payload: {
+        params,
+    },
     errors: {},
 });
 
@@ -63,13 +84,31 @@ export const receiveAsthmaPrevalence = (json) => ({
     errors: {},
 });
 
-const fetchAsthmaPrevalence = params => dispatch => {
-    // const query = convertQueryParameters(params);
-    dispatch(requestAsthmaPrevalence());
+export const receiveAsthmaPrevalenceGeoJson = (json) => ({
+    type: RECEIVE_ASTHMA_PREVALENCE_GEOJSON,
+    payload: {
+        json,
+    },
+    errors: {},
+});
 
-    return fetch('/api/asthma_prevalence')
+const fetchAsthmaPrevalence = params => dispatch => {
+    dispatch(requestAsthmaPrevalence(params));
+
+    let queryString = '';
+    if(params) {
+        queryString += params;
+    }
+
+    return fetch('/api/asthma_prevalence' + queryString)
         .then(response => response.json())
-        .then(json => dispatch(receiveAsthmaPrevalence(json)))
+        .then(json => {
+            if(params === '?output=GeoJSON') {
+                return dispatch(receiveAsthmaPrevalenceGeoJson(json));
+            }
+
+            return dispatch(receiveAsthmaPrevalence(json));
+        })
         .catch(error => console.error(error));
 };
 

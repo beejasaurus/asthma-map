@@ -1,0 +1,10 @@
+.komodo-state-territory-map {
+    padding: 1rem;
+}
+
+.komodo-state-territory-map .leaflet-container {
+    height: 30rem;
+    width: 30rem;
+    margin: 0;
+    padding: 0;
+}

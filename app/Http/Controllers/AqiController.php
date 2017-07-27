@@ -17,15 +17,17 @@ class AqiController extends Controller
         $stateTerritory = $request->get('state_territory');
         $county = $request->get('county');
         $year = $request->get('year');
-        // Unhealth > X
+        // Unhealthy > X
 
-        return Aqi::when($stateTerritory, function ($query) use ($stateTerritory) {
+        $aqi = Aqi::with('countyData')->when($stateTerritory, function ($query) use ($stateTerritory) {
             return $query->where('state_territory', $stateTerritory);
         })->when($county, function ($query) use ($county) {
             return $query->where('county', $county);
         })->when($year, function ($query) use ($year) {
             return $query->where('year', $year);
         })->get();
+
+        return $aqi;
     }
 
     /**
@@ -36,6 +38,8 @@ class AqiController extends Controller
      */
     public function show(Aqi $aqi)
     {
+        $aqi->load('county', 'stateTerritory', 'asthmaPrevalence');
+
         return $aqi;
     }
 }

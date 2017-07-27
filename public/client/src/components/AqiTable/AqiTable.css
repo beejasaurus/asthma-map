@@ -1,0 +1,49 @@
+table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table, th, td {
+    border: none;
+}
+
+thead {
+    border-bottom: 1px solid #d0d0d0;
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+/*table > tbody > tr:nth-child(odd) {*/
+    /*background-color: #f2f2f2;*/
+    /*display: table-row;*/
+/*}*/
+
+table > tbody > tr:hover,
+table > tbody > tr.komodo-active {
+    background-color: #f2f2f2;
+}
+
+.komodo-aqi-table tr:hover {
+    cursor: pointer;
+}
+
+table > tbody > tr >td {
+    border-radius: 0;
+}
+
+td, th {
+    padding: 15px 15px;
+    display: table-cell;
+    /*text-align: left;*/
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}

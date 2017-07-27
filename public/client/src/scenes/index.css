@@ -1,0 +1,54 @@
+.komodo {}
+
+.komodo-main {
+    float: left;
+    /*padding: 0 2rem;*/
+    width: 80%;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.komodo-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    padding-top: 2rem;
+    background-color: lightgray;
+    overflow: scroll;
+    height: 96vh;
+}
+
+.komodo-nav ul {
+    float: left;
+    width: 90%;
+}
+
+.komodo-nav li {
+    list-style: none;
+    /*width: 100%;*/
+}
+
+.komodo-nav-item a {
+    display: block;
+    padding: 1rem .5rem;
+    /*margin: .1rem 0;*/
+    background-color: steelblue;
+    text-align: right;
+    border: 1px solid lightgray;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.komodo-nav-item.komodo-active a {
+    background-color: darkblue;
+}
+
+.komodo-nav-item a:hover {
+    background-color: darkblue;
+}
+
+.komodo-nav-item a {
+    text-decoration: none;
+    color: white;
+}
