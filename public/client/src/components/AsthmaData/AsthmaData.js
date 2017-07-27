@@ -1,10 +1,11 @@
 import React from 'react';
 import DataSquare from '../DataSquare';
+import './AsthmaData.css';
 
 const AsthmaData = (props) => props.asthmaPrevalence && (
     <section className="komodo-data-block">
         <header>
-            <h3>Asthma</h3>
+            <h3>Asthma Statistics</h3>
         </header>
         <main>
             <DataSquare

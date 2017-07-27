@@ -2,7 +2,7 @@ import React from 'react';
 import './AqiTable.css';
 
 const AqiTable = ({aqi, activeCounty, onClickRow}) => aqi && (
-    <section className="komodo-data-block">
+    <section className="komodo-table-container">
         <header>
             <h3>County Air Quality</h3>
         </header>

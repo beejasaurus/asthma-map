@@ -3,6 +3,7 @@ import StateTerritoryMap from '../../components/StateTerritoryMap';
 import AsthmaData from '../../components/AsthmaData';
 import AqiData from '../../components/AqiData';
 import AqiTable from '../../components/AqiTable';
+import './StateTerritory.css';
 
 export default class StateTerritory extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class StateTerritory extends React.Component {
     }
 
     componentWillUpdate(props) {
-        const newStateTerritory = props.match.params.state_territory
+        const newStateTerritory = props.match.params.state_territory;
         if(newStateTerritory !== props.activeStateTerritory) {
             this.fetchStateTerritoryAqi();
             this.fetchStateTerritoryGeoJson();
@@ -43,7 +44,12 @@ export default class StateTerritory extends React.Component {
         const {match} = this.props;
         return (
             <section className="komodo-state-territory">
-                <h2>{match.params.state_territory}</h2>
+                <header>
+                    <h1>{match.params.state_territory}</h1>
+                    <span>2014</span>
+                </header>
+
+
                 <div className="komodo-grid-row">
                     <div className="komodo-grid-half">
                         <StateTerritoryMap/>

@@ -14,7 +14,9 @@
     right: 0;
     width: 20%;
     padding-top: 2rem;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
+    background-color: slategray;
+    /*background-color: lightsteelblue;*/
     overflow: scroll;
     height: 96vh;
 }
@@ -34,6 +36,7 @@
     padding: 1rem .5rem;
     /*margin: .1rem 0;*/
     background-color: steelblue;
+    /*background-color: slateblue;*/
     text-align: right;
     border: 1px solid lightgray;
     border-left: 0;

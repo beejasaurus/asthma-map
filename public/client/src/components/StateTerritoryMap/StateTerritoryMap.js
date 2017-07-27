@@ -53,7 +53,7 @@ export default class StateTerritoryMap extends React.Component {
     }
 
     onEachFeature(feature, layer) {
-        if (feature.geometry.type === 'Polygon') return;
+        if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') return;
 
         if (feature.properties && feature.properties.name) {
             layer.bindPopup(feature.properties.name);
@@ -95,7 +95,7 @@ export default class StateTerritoryMap extends React.Component {
                     />
                     }
 
-                    {activeCounty &&
+                    {activeCounty && selectedCounty &&
                     <Popup position={selectedCounty.geometry.coordinates.reverse()}>
                         <span>{selectedCounty.properties.name}</span>
                     </Popup>

@@ -1,1 +1,18 @@
-.komodo-state-territory-map {}
+.komodo-state-territory {
+    padding-left: 1rem;
+}
+
+.komodo-state-territory > header {
+    width: 99%;
+    padding: .5rem 0;
+    border-bottom: 1px dashed lightsteelblue;
+}
+
+.komodo-state-territory h1 {
+    font-size: 2rem;
+}
+
+.komodo-state-territory header span {
+    float: right;
+    margin-top: -2rem;
+}

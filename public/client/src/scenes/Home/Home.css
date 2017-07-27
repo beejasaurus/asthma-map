@@ -1,1 +1,70 @@
 .komodo-home {}
+
+.komodo-intro-text {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    padding: .5rem 1.5rem;
+    background-color: white;
+    opacity: 0.8;
+    z-index: 900;
+}
+
+.komodo-intro-text:hover {
+    opacity: 1;
+}
+
+.komodo-intro-text header {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.komodo-intro-text p {}
+
+.komodo-map-legend {
+    position: absolute;
+    bottom: 5%;
+    right: 22%;
+    z-index: 900;
+    padding: .5rem;
+    background-color: white;
+}
+
+.komodo-map-legend .komodo-color {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .1rem;
+}
+
+.komodo-color.color-1 {
+    background-color: #FFEDA0;
+}
+
+.komodo-color.color-2 {
+    background-color: #FED976;
+}
+
+.komodo-color.color-3 {
+    background-color: #FEB24C;
+}
+
+.komodo-color.color-4 {
+    background-color: #FD8D3C;
+}
+
+.komodo-color.color-5 {
+    background-color: #FC4E2A;
+}
+
+.komodo-color.color-6 {
+    background-color: #E31A1C;
+}
+
+.komodo-color.color-7 {
+    background-color: #BD0026;
+}
+
+.komodo-color.color-8 {
+    background-color: #800260;
+}
