@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('import_asthma','CsvImportController@getAsthmaData');
-Route::get('import_aqi','CsvImportController@getAqiData');
+//Route::get('import_asthma','CsvImportController@getAsthmaData');
+//Route::get('import_aqi','CsvImportController@getAqiData');
 //Route::get('geocode_fips','CsvImportController@geocodeFips');
-Route::get('import_counties','CsvImportController@importCounties');
+//Route::get('import_counties','CsvImportController@importCounties');
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return File::get(public_path() . '/client/build/index.html');
 });
