@@ -17,6 +17,5 @@
 //Route::get('import_counties','CsvImportController@importCounties');
 
 Route::get('/', function () {
-//    return view('welcome');
-    return File::get(public_path() . '/client/build/index.html');
+    return File::get(public_path() . '/index.html');
 });
