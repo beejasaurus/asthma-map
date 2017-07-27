@@ -3,6 +3,7 @@ import StateTerritoryMap from '../../components/StateTerritoryMap';
 import AsthmaData from '../../components/AsthmaData';
 import AqiData from '../../components/AqiData';
 import AqiTable from '../../components/AqiTable';
+import loading from './loading.gif';
 import './StateTerritory.css';
 
 export default class StateTerritory extends React.Component {
@@ -41,7 +42,7 @@ export default class StateTerritory extends React.Component {
     }
 
     render() {
-        const {match} = this.props;
+        const {match,stateTerritoryIsFetching} = this.props;
         return (
             <section className="komodo-state-territory">
                 <header>
@@ -49,21 +50,28 @@ export default class StateTerritory extends React.Component {
                     <span>2014</span>
                 </header>
 
-
-                <div className="komodo-grid-row">
-                    <div className="komodo-grid-half">
-                        <StateTerritoryMap/>
+                {stateTerritoryIsFetching ? (
+                    <div className="komodo-loading">
+                        <img src={loading} alt="Loading..."/>
                     </div>
-                    <div className="komodo-grid-half">
-                        <AsthmaData/>
-                        <AqiData/>
+                ) : (
+                    <div>
+                        <div className="komodo-grid-row">
+                            <div className="komodo-grid-half">
+                                <StateTerritoryMap/>
+                            </div>
+                            <div className="komodo-grid-half">
+                                <AsthmaData/>
+                                <AqiData/>
+                            </div>
+                        </div>
+                        <div className="komodo-grid-row">
+                            <div className="komodo-grid-all">
+                                <AqiTable/>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="komodo-grid-row">
-                    <div className="komodo-grid-all">
-                        <AqiTable/>
-                    </div>
-                </div>
+                )}
             </section>
         );
     }

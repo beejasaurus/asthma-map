@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import Component from './StateTerritory';
 import {
     getActiveStateTerritory,
+    getStateTerritoryIsFetching,
 } from '../../redux/modules/reducer';
 import {
     setActiveStateTerritory,
@@ -12,6 +13,7 @@ import {
 
 const mapStateToProps = (state) => ({
     activeStateTerritory: getActiveStateTerritory(state),
+    stateTerritoryIsFetching: getStateTerritoryIsFetching(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
